@@ -21,6 +21,13 @@
          <input type="button" id="btnsvg"
                 value="Descargar SVG" />
 <script>
+   // ASÍ VAMOS A CREAR EL DICT
+const cafetales =  {"sombra": {"color": "forestgreen","trabajo":"1", "produccion":"1"}, "sol":{"color": "limegreen","trabajo":"2", "produccion":"2"} }
+   // QUÉ MODOS DE CONTAR
+result = hexasfills.reduce((a, c) => (a[c] = (a[c] || 0) + 1, a), Object.create(null));
+
+
+
     // función que compara el color actual de un hexágono contra un array, toma el índice de ese color
     // en el array, y devuelve el siguiente color del array, en una repetición de N colores (con operador módulo)
     var colores = ['white', 'forestgreen','limegreen', 'greenyellow', 'darkorange', 'peru', 'blue']
@@ -44,7 +51,7 @@
       element.click()
       document.body.removeChild(element);
       }
-
+  // saca los colores como texto
     document.getElementById("btn")
       .addEventListener("click", function(){
       //var text = document.getElementById("chocuilo").style.fill;
@@ -56,7 +63,7 @@
       download(filename, hexasfills);
       }, false); 
   
-  
+  // saca el svg
   document.getElementById("btnsvg")
   .addEventListener("click", function(){
   const todo = document.getElementById("elsvg").outerHTML;
