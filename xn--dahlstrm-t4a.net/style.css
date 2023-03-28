@@ -1,0 +1,54 @@
+body { font-family: sans-serif; padding: 0px; margin:0px; height: 100%; background-color: #121212; }
+nav { font-size: 10px; }
+li { list-style-type: none; min-height: 18px }
+a { text-decoration: none; color: #dcdcdc }
+a:hover { text-decoration: underline }
+img { border-style: none }
+.kopimi {
+  right: 0; top: auto; left: auto; bottom: 0;
+  margin: 4px; width: 40px; height: 32px;
+}
+.kopimi span::before { content: url(images/kopimi-opaque.svgz); }
+.main {
+  width: 75%;
+}
+.content {
+  padding-top: 8px;
+  padding-left: 20%;
+}
+.icon { margin-left: -19px; width: 16px; height: 16px; float: left; margin-top: -2px }
+@media screen {
+  nav {
+    width: 20%;
+    float: left;
+  }
+  .right {
+    width: 25%;
+    height: 100%;
+    position:absolute; top: auto; bottom: 0; right: 0; left: auto;
+    z-index: -1;
+  }
+  .upperright {
+    height:10%;
+    min-height:100px;
+    position:fixed; top:0; right: 0; left: auto; bottom:0;
+  }
+  footer {
+    background: url(images/grasspat.svgz);
+    height: 64px; width: 100%;
+    position: fixed; left: 0; right: 0; top: auto; bottom:0;
+  }
+  .kopimi {
+    position: fixed;
+  }
+}
+@media handheld {
+  .upperright, .i, .kopimi {
+    display: none;
+  }
+  footer {
+    background: url(images/grasspat.svgz);
+    height: 64px; width: 100%;
+  }
+}
+

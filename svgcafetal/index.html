@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tablero hexagonal interactivo</title> 
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+    <body>
+<input type="button" id="btn"
+                value="Download" />
+
+<textarea id="text">
+             Welcome to GeeksforGeeks
+   </textarea>
+<script>
+// salió de aquí:
+// https://www.geeksforgeeks.org/how-to-trigger-a-file-download-when-clicking-an-html-button-or-javascript/
+function download(file, text) {
+                //creating an invisible element
+                var element = document.createElement('a');
+                element.setAttribute('href',
+                'data:text/plain;charset=utf-8, '
+                + encodeURIComponent(text));
+                element.setAttribute('download', file);
+                document.body.appendChild(element);
+                //onClick property
+                element.click();
+                document.body.removeChild(element);
+            }
+          
+            // Start file download.
+            document.getElementById("btn")
+            .addEventListener("click", function() {
+                // aquí ya funciona sacando el color del elemento con id "chocuilo"
+                var text = document.getElementById("chocuilo").style.fill;
+                var filename = "GFG.txt";
+                download(filename, text);
+            }, false);
+
+var colores = ['white', 'forestgreen','limegreen', 'greenyellow', 'darkorange', 'peru', 'blue']
+
+function myFunction(element) {
+  // aquí obviamente se tienen que definir adentro la función, por la referencia a element
+  // además usamos "object"" para no crear conflicto con "element" que es el estándar para findIndex()
+  // y el operador módulo siempre al rescate
+  const iscolorsin = (object) => object == element.style.fill;
+  element.style.fill = colores[(colores.findIndex(iscolorsin)+1) % 7 ];
+}
+</script>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="365pt" viewBox="0 0 345 365" version="1.1">
+<defs>
+<clipPath id="clip1">
+  <path d="M 109 59.039062 L 265 59.039062 L 265 291.558594 L 109 291.558594 Z M 109 59.039062 "/>
+</clipPath>
+<clipPath id="clip2">
+  <path d="M 108 59.039062 L 266 59.039062 L 266 291.558594 L 108 291.558594 Z M 108 59.039062 "/>
+</clipPath>
+</defs>
+<g id="surface1429">
+<rect x="0" y="0" width="345" height="365" style="fill:rgb(100%,100%,100%);fill-opacity:1;stroke:none;"/>
+<g clip-path="url(#clip1)" clip-rule="nonzero">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 109.007812 291.558594 L 264.789062 291.558594 L 264.789062 59.039062 L 109.007812 59.039062 Z M 109.007812 291.558594 "/>
+</g>
+<g clip-path="url(#clip2)" clip-rule="nonzero">
+<path style="fill:white;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:10;" d="M 109.007812 291.558594 L 264.789062 291.558594 L 264.789062 59.039062 L 109.007812 59.039062 Z M 109.007812 291.558594 "/>
+</g>
+<path id="chocuilo" style="fill:white;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 143.871094 233.265625 L 115.1875 216.703125 L 115.1875 183.582031 L 143.871094 167.019531 L 172.558594 183.582031 L 172.558594 216.703125 Z M 143.871094 233.265625 " onclick = "myFunction(this)" />
+<path style="fill:white;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 143.871094 133.898438 L 115.1875 117.335938 L 115.1875 84.214844 L 143.871094 67.652344 L 172.558594 84.214844 L 172.558594 117.335938 Z M 143.871094 133.898438 " onclick = "myFunction(this)"/>
+<path style="fill:white;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 172.558594 282.949219 L 143.871094 266.386719 L 143.871094 233.265625 L 172.558594 216.703125 L 201.242188 233.265625 L 201.242188 266.386719 Z M 172.558594 282.949219 " onclick = "myFunction(this)"/>
+<path style="fill:white;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 172.558594 183.582031 L 143.871094 167.019531 L 143.871094 133.898438 L 172.558594 117.335938 L 201.242188 133.898438 L 201.242188 167.019531 Z M 172.558594 183.582031 " onclick = "myFunction(this)"/>
+<path style="fill:white;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 201.242188 233.265625 L 172.558594 216.703125 L 172.558594 183.582031 L 201.242188 167.019531 L 229.925781 183.582031 L 229.925781 216.703125 Z M 201.242188 233.265625 " onclick = "myFunction(this)"/>
+<path style="fill:white;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 201.242188 133.898438 L 172.558594 117.335938 L 172.558594 84.214844 L 201.242188 67.652344 L 229.925781 84.214844 L 229.925781 117.335938 Z M 201.242188 133.898438 " onclick = "myFunction(this)"/>
+<path style="fill:white;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 229.925781 282.949219 L 201.242188 266.386719 L 201.242188 233.265625 L 229.925781 216.703125 L 258.613281 233.265625 L 258.613281 266.386719 Z M 229.925781 282.949219 " onclick = "myFunction(this)"/>
+<path style="fill:white;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 229.925781 183.582031 L 201.242188 167.019531 L 201.242188 133.898438 L 229.925781 117.335938 L 258.613281 133.898438 L 258.613281 167.019531 Z M 229.925781 183.582031 " onclick = "myFunction(this)"/>
+</g>
+</svg>
+
+    </body>
+</html>
