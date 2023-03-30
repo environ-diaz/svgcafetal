@@ -24,27 +24,23 @@
          <input type="button" id="btnsvg"
                 value="Descargar SVG" />
 <script>
-// esta función salió de 
+// esta función salió de 😶‍🌫️️
 // https://stackoverflow.com/questions/11958641/print-out-javascript-array-in-table/37546628#37546628
-// 😶‍🌫️️
-tableMaker = o => {var keys = Object.keys(o[0]),
-                   rowMaker = (a,t) => a.reduce((p,c,i,a) => p + (i === a.length-1 ? "<" + t + ">" + c + "</" + t + "></tr>"
-                                                                                   : "<" + t + ">" + c + "</" + t + ">"),"<tr>"),
-                       rows = o.reduce((r,c) => r + rowMaker(keys.reduce((v,k) => v.concat(c[k]),[]),"td"),rowMaker(keys,"th"));
-                   return "<table>" + rows + "</table>";
-                  };
+
+    tableMaker = o => {var keys = Object.keys(o[0]),
+                       rowMaker = (a,t) => a.reduce((p,c,i,a) => p + (i === a.length-1 ? "<" + t + ">" + c + "</" + t + "></tr>"
+                                                                                       : "<" + t + ">" + c + "</" + t + ">"),"<tr>"),
+                           rows = o.reduce((r,c) => r + rowMaker(keys.reduce((v,k) => v.concat(c[k]),[]),"td"),rowMaker(keys,"th"));
+                       return "<table>" + rows + "</table>";
+                      };
 
 
-// ASÍ VAMOS A CREAR EL ARRAY (json creado online) 🤯️
-usosuelo = [{"color":"white","tipo":"nulo","trabj":0,"rinde":0},
-            {"color":"forestgreen","tipo":"cafesombra","trabj":1,"rinde":1},
-            {"color":"greenyellow","tipo":"cafesol","trabj":2,"rinde":2},
-            {"color":"peru","tipo":"autoabasto","trabj":2,"rinde":2},
-            {"color":"blue","tipo":"comercial","trabj":2,"rinde":2}]
-
-  // QUÉ MODOS DE CONTAR 🥸️
-  // PARECE QUE VA A NECESITAR DE UN ESCUCHADOR
-  // result = hexasfills.reduce((a, c) => (a[c] = (a[c] || 0) + 1, a), Object.create(null));
+// CREAR EL ARRAY (json creado online) 🤯️
+    usosuelo = [{"color":"white","tipo":"nulo","trabj":0,"rinde":0},
+                {"color":"forestgreen","tipo":"cafesombra","trabj":1,"rinde":1},
+                {"color":"greenyellow","tipo":"cafesol","trabj":2,"rinde":2},
+                {"color":"peru","tipo":"autoabasto","trabj":2,"rinde":2},
+                {"color":"blue","tipo":"comercial","trabj":2,"rinde":2}]
 
     var hexas = document.getElementsByTagName('path'); // la func que jala el svg
 
@@ -61,7 +57,7 @@ usosuelo = [{"color":"white","tipo":"nulo","trabj":0,"rinde":0},
          for (let elem of hexas) {
             hexasfills.push(elem.style.fill); // "test", "passed"
           }; 
-         // el horrible group count de JS
+        // el group count de JS 🧮️
         result = hexasfills.reduce((a, c) => (a[c] = (a[c] || 0) + 1, a), Object.create(null));  
         var usosmap = {};
             usosuelo.forEach(function(uso) {usosmap[uso.color] = uso;});
@@ -91,7 +87,6 @@ usosuelo = [{"color":"white","tipo":"nulo","trabj":0,"rinde":0},
   // saca un listado de colores como texto
     document.getElementById("btn")
       .addEventListener("click", function(){
-      //var text = document.getElementById("chocuilo").style.fill;
       var filename = document.getElementById("jugada").value + "a_jugada.txt";
       var hexasfills = [];
     for (let elem of hexas) {
@@ -105,8 +100,6 @@ usosuelo = [{"color":"white","tipo":"nulo","trabj":0,"rinde":0},
   .addEventListener("click", function(){
   const todo = document.getElementById("elsvg").outerHTML;
   const blob = new Blob([todo.toString()]);
-  //var filenamesvg = document.getElementById("jugada").value + "st_play.svg"
-  //download(filenamesvg, blob);
   const element = document.createElement("a");
   element.download = document.getElementById("jugada").value + "a_jugada.svg";
   element.href = window.URL.createObjectURL(blob);
