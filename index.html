@@ -65,8 +65,8 @@
         var nuevorendi = [];
         for (let elem of colores) {
             nuevorendi.push({   col: usosmap[elem]["tipo"], 
-                                rendi: result[elem] || 0 * usosmap[elem]["rinde"]  ,
-                                trabj: result[elem] || 0 * usosmap[elem]["trabj"]  });  // el || 0 es para quitar NaN
+                                rendi: result[elem] * usosmap[elem]["rinde"] || 0  ,
+                                trabj: result[elem]  * usosmap[elem]["trabj"]  || 0 });  // el || 0 es para quitar NaN
           }; 
  
         document.getElementById("app").innerHTML = tableMaker(nuevorendi);
