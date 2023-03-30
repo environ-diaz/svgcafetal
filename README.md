@@ -5,13 +5,14 @@ Los colores están asociados a coberturas de suelo:
 
 |color|cultivo|
 |-----|-------|
-|Verde oscuro| cafetales de sombra    |
-|Verde claro | cafetales de sol       |
-|Naranja     | cultivos de autoabasto |
+|![#c5ff15](https://placehold.co/15x15/c5f015/c5f015.png) Verde oscuro| cafetales de sombra    |
+|![#c5b015](https://placehold.co/15x15/c5f015/c5f015.png)Verde claro | cafetales de sol       |
+| Naranja     | cultivos de autoabasto |
+|![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)  Azul | cultivos comerciales (limón, caña)|
 
 
 __Requisitos__:
 
 * que cambie de color el svg onClick
 * que se descargue el svg con la configuración espacial de la jugada
-* que se sumen automáticamente los valores de traba
+* que se sumen automáticamente los valores de trabajo y rendimiento de producción asociados a cada cultivo
