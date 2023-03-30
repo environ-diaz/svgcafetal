@@ -39,7 +39,7 @@ tableMaker = o => {var keys = Object.keys(o[0]),
 usosuelo = [{"color":"white","tipo":"nulo","trabj":0,"rinde":0},
             {"color":"forestgreen","tipo":"cafesombra","trabj":1,"rinde":1},
             {"color":"greenyellow","tipo":"cafesol","trabj":2,"rinde":2},
-            {"color":"darkorange","tipo":"autoabasto","trabj":2,"rinde":2},
+            {"color":"peru","tipo":"autoabasto","trabj":2,"rinde":2},
             {"color":"blue","tipo":"comercial","trabj":2,"rinde":2}]
 
   // QUÉ MODOS DE CONTAR 🥸️
@@ -50,7 +50,7 @@ usosuelo = [{"color":"white","tipo":"nulo","trabj":0,"rinde":0},
 
     // función que compara el color actual de un hexágono contra un array, toma el índice de ese color
     // en el array, y devuelve el siguiente color del array, en una repetición de N colores (con operador módulo)
-    var colores = ['white', 'forestgreen','greenyellow', 'darkorange', 'blue']
+    var colores = ['white', 'forestgreen','greenyellow', 'peru', 'blue']
     function myFunction(element) {
       // aquí obviamente se tienen que definir adentro la función, por la referencia a element
       // además usamos "object"" para no crear conflicto con "element" que es el estándar para findIndex()
