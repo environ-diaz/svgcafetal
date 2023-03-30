@@ -5,9 +5,9 @@ Los colores están asociados a coberturas de suelo:
 
 |color|cultivo|
 |-----|-------|
-|![#c5ff15](https://placehold.co/15x15/c5f015/c5f015.png) Verde oscuro| cafetales de sombra    |
-|![#c5b015](https://placehold.co/15x15/c5f015/c5f015.png)Verde claro | cafetales de sol       |
-| Naranja     | cultivos de autoabasto |
+|![#009933](https://placehold.co/15x15/009933/009933.png) | cafetales de sombra    |
+|![#ccff66](https://placehold.co/15x15/ccff66/ccff66.png) | cafetales de sol       |
+|![#ff6600](https://placehold.co/15x15/ff6600/ff6600.png) | cultivos de autoabasto |
 |![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png)  Azul | cultivos comerciales (limón, caña)|
 
 
