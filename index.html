@@ -25,7 +25,10 @@
 const cafetales =  {"sombra": {"color": "forestgreen","trabajo":"1", "produccion":"1"}, "sol":{"color": "limegreen","trabajo":"2", "produccion":"2"} }
    // QUÉ MODOS DE CONTAR
    // PARECE QUE VA A NECESITAR DE UN ESCUCHADOR
-result = hexasfills.reduce((a, c) => (a[c] = (a[c] || 0) + 1, a), Object.create(null));
+// result = hexasfills.reduce((a, c) => (a[c] = (a[c] || 0) + 1, a), Object.create(null));
+
+    var hexas = document.getElementsByTagName('path');
+
 
 
 
@@ -36,11 +39,12 @@ result = hexasfills.reduce((a, c) => (a[c] = (a[c] || 0) + 1, a), Object.create(
       // aquí obviamente se tienen que definir adentro la función, por la referencia a element
       // además usamos "object"" para no crear conflicto con "element" que es el estándar para findIndex()
       // y el operador módulo siempre al rescate
-      const iscolorsin = (object) => object == element.style.fill;
+      var iscolorsin = (object) => object == element.style.fill;
       element.style.fill = colores[(colores.findIndex(iscolorsin)+1) % 7 ];
+    
     }
 
-    let hexas = document.getElementsByTagName('path')
+
     function download(file, text) {
       var element = document.createElement('a');
       element.setAttribute('href',
@@ -56,12 +60,12 @@ result = hexasfills.reduce((a, c) => (a[c] = (a[c] || 0) + 1, a), Object.create(
     document.getElementById("btn")
       .addEventListener("click", function(){
       //var text = document.getElementById("chocuilo").style.fill;
-      const hexasfills = []
-      for (let elem of hexas) {
-        hexasfills.push(elem.style.fill); // "test", "passed"
-      }
       var filename = document.getElementById("jugada").value + "a_jugada.txt";
-      download(filename, hexasfills);
+    var hexasfills = [];
+    for (let elem of hexas) {
+        hexasfills.push(elem.style.fill); // "test", "passed"
+      };
+    download(filename, hexasfills);
       }, false); 
   
   // saca el svg
