@@ -24,6 +24,9 @@
          <input type="button" id="btnsvg"
                 value="Descargar SVG" />
 <script>
+// esta función salió de 
+// https://stackoverflow.com/questions/11958641/print-out-javascript-array-in-table/37546628#37546628
+
 tableMaker = o => {var keys = Object.keys(o[0]),
                    rowMaker = (a,t) => a.reduce((p,c,i,a) => p + (i === a.length-1 ? "<" + t + ">" + c + "</" + t + "></tr>"
                                                                                    : "<" + t + ">" + c + "</" + t + ">"),"<tr>"),
@@ -32,21 +35,18 @@ tableMaker = o => {var keys = Object.keys(o[0]),
                   };
 
 
-// ASÍ VAMOS A CREAR EL ARRAY
+// ASÍ VAMOS A CREAR EL ARRAY (json creado online)
 usosuelo = [{"color":"white","tipo":"nulo","trabj":0,"rinde":0},
             {"color":"forestgreen","tipo":"cafesombra","trabj":1,"rinde":1},
             {"color":"greenyellow","tipo":"cafesol","trabj":2,"rinde":2},
             {"color":"darkorange","tipo":"autoabasto","trabj":2,"rinde":2},
             {"color":"blue","tipo":"comercial","trabj":2,"rinde":2}]
 
-// así llegamos al valor que queremos en el array
-usosuelo.filter(d => d.color === 'darkorange')[0]["rinde"]
-
   // QUÉ MODOS DE CONTAR
   // PARECE QUE VA A NECESITAR DE UN ESCUCHADOR
   // result = hexasfills.reduce((a, c) => (a[c] = (a[c] || 0) + 1, a), Object.create(null));
 
-    var hexas = document.getElementsByTagName('path');
+    var hexas = document.getElementsByTagName('path'); // la func que jala el svg
 
     // función que compara el color actual de un hexágono contra un array, toma el índice de ese color
     // en el array, y devuelve el siguiente color del array, en una repetición de N colores (con operador módulo)
