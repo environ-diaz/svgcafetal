@@ -18,13 +18,25 @@
             <input type="button" id="btn"
                 value="Descargar colores del SVG" />
          </div>
-         <div id="app"></div>
+        <div> <b> Tabla rendimiento/trabajo requerido </b> </div>
+         <div  id="app"> 
+         </div>
          <input type="button" id="btnsvg"
                 value="Descargar SVG" />
 <script>
-   // ASÍ VAMOS A CREAR EL ARRAY
-usosuelo = [{"color":"white","tipo":"nulo","trabj":0,"rinde":0},{"color":"forestgreen","tipo":"cafesombra","trabj":1,"rinde":1},
-            {"color":"greenyellow","tipo":"cafesol","trabj":2,"rinde":2},{"color":"darkorange","tipo":"autoabasto","trabj":2,"rinde":2},
+tableMaker = o => {var keys = Object.keys(o[0]),
+                   rowMaker = (a,t) => a.reduce((p,c,i,a) => p + (i === a.length-1 ? "<" + t + ">" + c + "</" + t + "></tr>"
+                                                                                   : "<" + t + ">" + c + "</" + t + ">"),"<tr>"),
+                       rows = o.reduce((r,c) => r + rowMaker(keys.reduce((v,k) => v.concat(c[k]),[]),"td"),rowMaker(keys,"th"));
+                   return "<table>" + rows + "</table>";
+                  };
+
+
+// ASÍ VAMOS A CREAR EL ARRAY
+usosuelo = [{"color":"white","tipo":"nulo","trabj":0,"rinde":0},
+            {"color":"forestgreen","tipo":"cafesombra","trabj":1,"rinde":1},
+            {"color":"greenyellow","tipo":"cafesol","trabj":2,"rinde":2},
+            {"color":"darkorange","tipo":"autoabasto","trabj":2,"rinde":2},
             {"color":"blue","tipo":"comercial","trabj":2,"rinde":2}]
 
 // así llegamos al valor que queremos en el array
@@ -51,7 +63,17 @@ usosuelo.filter(d => d.color === 'darkorange')[0]["rinde"]
           }; 
          // el horrible group count de JS
          result = hexasfills.reduce((a, c) => (a[c] = (a[c] || 0) + 1, a), Object.create(null));  
-        document.getElementById("app").innerHTML = JSON.stringify(result);
+        var usosmap = {};
+        usosuelo.forEach(function(uso) {usosmap[uso.color] = uso;});
+
+        var nuevorendi = [];
+        for (let elem of colores) {
+            nuevorendi.push({   col: usosmap[elem]["tipo"], 
+                                rendi: result[elem] || 0 * usosmap[elem]["rinde"]  ,
+                                trabj: result[elem] || 0 * usosmap[elem]["trabj"]  }); 
+          }; 
+ 
+        document.getElementById("app").innerHTML = tableMaker(nuevorendi);
     }
 
 
