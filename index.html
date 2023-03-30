@@ -22,23 +22,29 @@
          <input type="button" id="btnsvg"
                 value="Descargar SVG" />
 <script>
-   // ASÍ VAMOS A CREAR EL DICT
-const cafetales =  {"sombra": {"color": "forestgreen","trabajo":"1", "produccion":"1"}, "sol":{"color": "limegreen","trabajo":"2", "produccion":"2"} }
-   // QUÉ MODOS DE CONTAR
-   // PARECE QUE VA A NECESITAR DE UN ESCUCHADOR
-// result = hexasfills.reduce((a, c) => (a[c] = (a[c] || 0) + 1, a), Object.create(null));
+   // ASÍ VAMOS A CREAR EL ARRAY
+usosuelo = [{"color":"white","tipo":"nulo","trabj":0,"rinde":0},{"color":"forestgreen","tipo":"cafesombra","trabj":1,"rinde":1},
+            {"color":"greenyellow","tipo":"cafesol","trabj":2,"rinde":2},{"color":"darkorange","tipo":"autoabasto","trabj":2,"rinde":2},
+            {"color":"blue","tipo":"comercial","trabj":2,"rinde":2}]
+
+// así llegamos al valor que queremos en el array
+usosuelo.filter(d => d.color === 'darkorange')[0]["rinde"]
+
+  // QUÉ MODOS DE CONTAR
+  // PARECE QUE VA A NECESITAR DE UN ESCUCHADOR
+  // result = hexasfills.reduce((a, c) => (a[c] = (a[c] || 0) + 1, a), Object.create(null));
 
     var hexas = document.getElementsByTagName('path');
 
     // función que compara el color actual de un hexágono contra un array, toma el índice de ese color
     // en el array, y devuelve el siguiente color del array, en una repetición de N colores (con operador módulo)
-    var colores = ['white', 'forestgreen','limegreen', 'greenyellow', 'darkorange', 'peru', 'blue']
+    var colores = ['white', 'forestgreen','greenyellow', 'darkorange', 'blue']
     function myFunction(element) {
       // aquí obviamente se tienen que definir adentro la función, por la referencia a element
       // además usamos "object"" para no crear conflicto con "element" que es el estándar para findIndex()
       // y el operador módulo siempre al rescate
          var iscolorsin = (object) => object == element.style.fill;
-          element.style.fill = colores[(colores.findIndex(iscolorsin)+1) % 7 ];
+          element.style.fill = colores[(colores.findIndex(iscolorsin)+1) % 5 ];
          var hexasfills = [];
          for (let elem of hexas) {
             hexasfills.push(elem.style.fill); // "test", "passed"
