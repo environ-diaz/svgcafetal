@@ -18,6 +18,7 @@
             <input type="button" id="btn"
                 value="Descargar colores del SVG" />
          </div>
+         <div id="app"></div>
          <input type="button" id="btnsvg"
                 value="Descargar SVG" />
 <script>
@@ -29,9 +30,6 @@ const cafetales =  {"sombra": {"color": "forestgreen","trabajo":"1", "produccion
 
     var hexas = document.getElementsByTagName('path');
 
-
-
-
     // función que compara el color actual de un hexágono contra un array, toma el índice de ese color
     // en el array, y devuelve el siguiente color del array, en una repetición de N colores (con operador módulo)
     var colores = ['white', 'forestgreen','limegreen', 'greenyellow', 'darkorange', 'peru', 'blue']
@@ -39,13 +37,15 @@ const cafetales =  {"sombra": {"color": "forestgreen","trabajo":"1", "produccion
       // aquí obviamente se tienen que definir adentro la función, por la referencia a element
       // además usamos "object"" para no crear conflicto con "element" que es el estándar para findIndex()
       // y el operador módulo siempre al rescate
-      var iscolorsin = (object) => object == element.style.fill;
-      element.style.fill = colores[(colores.findIndex(iscolorsin)+1) % 7 ];
-    var hexasfills = [];
-    for (let elem of hexas) {
-        hexasfills.push(elem.style.fill); // "test", "passed"
-      };
-    result = hexasfills.reduce((a, c) => (a[c] = (a[c] || 0) + 1, a), Object.create(null));  
+         var iscolorsin = (object) => object == element.style.fill;
+          element.style.fill = colores[(colores.findIndex(iscolorsin)+1) % 7 ];
+         var hexasfills = [];
+         for (let elem of hexas) {
+            hexasfills.push(elem.style.fill); // "test", "passed"
+          }; 
+         // el horrible group count de JS
+         result = hexasfills.reduce((a, c) => (a[c] = (a[c] || 0) + 1, a), Object.create(null));  
+        document.getElementById("app").innerHTML = JSON.stringify(result);
     }
 
 
@@ -65,7 +65,7 @@ const cafetales =  {"sombra": {"color": "forestgreen","trabajo":"1", "produccion
       .addEventListener("click", function(){
       //var text = document.getElementById("chocuilo").style.fill;
       var filename = document.getElementById("jugada").value + "a_jugada.txt";
-    var hexasfills = [];
+      var hexasfills = [];
     for (let elem of hexas) {
         hexasfills.push(elem.style.fill); // "test", "passed"
       };
