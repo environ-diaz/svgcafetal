@@ -66,10 +66,11 @@
         for (let elem of colores) {
             nuevorendi.push({   cultivo: usosmap[elem]["tipo"], 
                                 inversion:  result[elem]  * usosmap[elem]["dinero"]   || 0 ,
-                                trabajo: result[elem]  * usosmap[elem]["trabj"]    || 0 ,
-                                venta:   result[elem]  * usosmap[elem]["venta"]    || 0 ,
-                                alimento: result[elem] * usosmap[elem]["alimento"] || 0});  // el || 0 es para quitar NaN
+                                trabajo:    result[elem]  * usosmap[elem]["trabj"]    || 0 ,
+                                venta:      result[elem]  * usosmap[elem]["venta"]    || 0 ,
+                                alimento:   result[elem] * usosmap[elem]["alimento"]  || 0});  // el || 0 es para quitar NaN
           }; 
+        // aquí generamos un total; el array vacío debe llevar los nombres        
         var res = {"cultivo": "TOTAL", "inversion": 0, "trabajo": 0, "venta": 0,  "alimento":0};
         for(let e of ["inversion", "trabajo", "venta",  "alimento"] ){
         for(var i = 0; i<nuevorendi.length; i++){
