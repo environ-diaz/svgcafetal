@@ -36,11 +36,11 @@
 
 
 // CREAR EL ARRAY (json creado online) 🤯️
-    usosuelo = [{"color":"white","tipo":"nulo","trabj":0,"rinde":0},
-                {"color":"forestgreen","tipo":"cafesombra","trabj":1,"rinde":1},
-                {"color":"greenyellow","tipo":"cafesol","trabj":2,"rinde":2},
-                {"color":"peru","tipo":"autoabasto","trabj":2,"rinde":2},
-                {"color":"blue","tipo":"comercial","trabj":2,"rinde":2}]
+    usosuelo = [{"color":"white",       "tipo":"nulo",      "trabj":0,  "dinero":0},
+                {"color":"forestgreen", "tipo":"cafesombra","trabj":1,  "dinero":1},
+                {"color":"greenyellow", "tipo":"cafesol",   "trabj":0,  "dinero":2},
+                {"color":"peru",        "tipo":"autoabasto","trabj":2,  "dinero":0},
+                {"color":"blue",        "tipo":"comercial", "trabj":0,  "dinero":2}]
 
     var hexas = document.getElementsByTagName('path'); // la func que jala el svg
 
@@ -64,9 +64,9 @@
 
         var nuevorendi = [];
         for (let elem of colores) {
-            nuevorendi.push({   col: usosmap[elem]["tipo"], 
-                                rendi: result[elem] * usosmap[elem]["rinde"] || 0  ,
-                                trabj: result[elem]  * usosmap[elem]["trabj"]  || 0 });  // el || 0 es para quitar NaN
+            nuevorendi.push({   cultivo: usosmap[elem]["tipo"], 
+                                dinero: result[elem]  * usosmap[elem]["dinero"]  || 0  ,
+                                trabajo: result[elem]  * usosmap[elem]["trabj"]  || 0 });  // el || 0 es para quitar NaN
           }; 
  
         document.getElementById("app").innerHTML = tableMaker(nuevorendi);
