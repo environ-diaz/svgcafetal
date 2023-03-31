@@ -18,7 +18,7 @@
             <input type="button" id="btn"
                 value="Descargar colores del SVG" />
          </div>
-        <div> <b> Tabla rendimiento/trabajo requerido </b> </div>
+        <div> <b> Tabla inversion+trabajo y venta+autoalimento </b> </div>
          <div  id="app"> 
          </div>
          <input type="button" id="btnsvg"
@@ -36,11 +36,11 @@
 
 
 // CREAR EL ARRAY (json creado online) 🤯️
-    usosuelo = [{"color":"white",       "tipo":"nulo",      "trabj":0,  "dinero":0},
-                {"color":"forestgreen", "tipo":"cafesombra","trabj":1,  "dinero":1},
-                {"color":"greenyellow", "tipo":"cafesol",   "trabj":0,  "dinero":2},
-                {"color":"peru",        "tipo":"autoabasto","trabj":2,  "dinero":0},
-                {"color":"blue",        "tipo":"comercial", "trabj":0,  "dinero":2}]
+    usosuelo = [{"color":"white",       "tipo":"nulo",      "trabj":0,  "dinero":0, "venta": 0,  "alimento": 0},
+                {"color":"forestgreen", "tipo":"cafesombra","trabj":1,  "dinero":1, "venta": 1,  "alimento": 1},
+                {"color":"greenyellow", "tipo":"cafesol",   "trabj":0,  "dinero":2, "venta": 2,  "alimento": 0},
+                {"color":"peru",        "tipo":"autoabasto","trabj":2,  "dinero":0, "venta": 0,  "alimento": 2},
+                {"color":"blue",        "tipo":"comercial", "trabj":0,  "dinero":2, "venta": 2,  "alimento": 0}]
 
     var hexas = document.getElementsByTagName('path'); // la func que jala el svg
 
@@ -65,11 +65,18 @@
         var nuevorendi = [];
         for (let elem of colores) {
             nuevorendi.push({   cultivo: usosmap[elem]["tipo"], 
-                                dinero: result[elem]  * usosmap[elem]["dinero"]  || 0  ,
-                                trabajo: result[elem]  * usosmap[elem]["trabj"]  || 0 });  // el || 0 es para quitar NaN
+                                inversion:  result[elem]  * usosmap[elem]["dinero"]   || 0 ,
+                                trabajo: result[elem]  * usosmap[elem]["trabj"]    || 0 ,
+                                venta:   result[elem]  * usosmap[elem]["venta"]    || 0 ,
+                                alimento: result[elem] * usosmap[elem]["alimento"] || 0});  // el || 0 es para quitar NaN
           }; 
- 
-        document.getElementById("app").innerHTML = tableMaker(nuevorendi);
+        var res = {"cultivo": "TOTAL", "inversion": 0, "trabajo": 0, "venta": 0,  "alimento":0};
+        for(let e of ["inversion", "trabajo", "venta",  "alimento"] ){
+        for(var i = 0; i<nuevorendi.length; i++){
+            res[e] = (res[e] || 0) + nuevorendi[i][e];
+              }
+            }
+        document.getElementById("app").innerHTML = tableMaker(nuevorendi.concat(res));
     }
 
 
@@ -111,14 +118,14 @@
 </script>
 
 <svg id="elsvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="365pt" viewBox="0 0 345 365" version="1.1">
-<path id="chocuilo" style="fill:white;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 143.871094 233.265625 L 115.1875 216.703125 L 115.1875 183.582031 L 143.871094 167.019531 L 172.558594 183.582031 L 172.558594 216.703125 Z M 143.871094 233.265625 " onclick = "myFunction(this)" />
-<path style="fill:white;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 143.871094 133.898438 L 115.1875 117.335938 L 115.1875 84.214844 L 143.871094 67.652344 L 172.558594 84.214844 L 172.558594 117.335938 Z M 143.871094 133.898438 " onclick = "myFunction(this)"/>
-<path style="fill:white;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 172.558594 282.949219 L 143.871094 266.386719 L 143.871094 233.265625 L 172.558594 216.703125 L 201.242188 233.265625 L 201.242188 266.386719 Z M 172.558594 282.949219 " onclick = "myFunction(this)"/>
-<path style="fill:white;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 172.558594 183.582031 L 143.871094 167.019531 L 143.871094 133.898438 L 172.558594 117.335938 L 201.242188 133.898438 L 201.242188 167.019531 Z M 172.558594 183.582031 " onclick = "myFunction(this)"/>
-<path style="fill:white;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 201.242188 233.265625 L 172.558594 216.703125 L 172.558594 183.582031 L 201.242188 167.019531 L 229.925781 183.582031 L 229.925781 216.703125 Z M 201.242188 233.265625 " onclick = "myFunction(this)"/>
-<path style="fill:white;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 201.242188 133.898438 L 172.558594 117.335938 L 172.558594 84.214844 L 201.242188 67.652344 L 229.925781 84.214844 L 229.925781 117.335938 Z M 201.242188 133.898438 " onclick = "myFunction(this)"/>
-<path style="fill:white;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 229.925781 282.949219 L 201.242188 266.386719 L 201.242188 233.265625 L 229.925781 216.703125 L 258.613281 233.265625 L 258.613281 266.386719 Z M 229.925781 282.949219 " onclick = "myFunction(this)"/>
-<path style="fill:white;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 229.925781 183.582031 L 201.242188 167.019531 L 201.242188 133.898438 L 229.925781 117.335938 L 258.613281 133.898438 L 258.613281 167.019531 Z M 229.925781 183.582031 " onclick = "myFunction(this)"/>
+<path id="chocuilo" style="fill:white;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(50%,50%,50%);stroke-opacity:1;stroke-miterlimit:10;" d="M 143.871094 233.265625 L 115.1875 216.703125 L 115.1875 183.582031 L 143.871094 167.019531 L 172.558594 183.582031 L 172.558594 216.703125 Z M 143.871094 233.265625 " onclick = "myFunction(this)" />
+<path style="fill:white;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(50%,50%,50%);stroke-opacity:1;stroke-miterlimit:10;" d="M 143.871094 133.898438 L 115.1875 117.335938 L 115.1875 84.214844 L 143.871094 67.652344 L 172.558594 84.214844 L 172.558594 117.335938 Z M 143.871094 133.898438 " onclick = "myFunction(this)"/>
+<path style="fill:white;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(50%,50%,50%);stroke-opacity:1;stroke-miterlimit:10;" d="M 172.558594 282.949219 L 143.871094 266.386719 L 143.871094 233.265625 L 172.558594 216.703125 L 201.242188 233.265625 L 201.242188 266.386719 Z M 172.558594 282.949219 " onclick = "myFunction(this)"/>
+<path style="fill:white;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(50%,50%,50%);stroke-opacity:1;stroke-miterlimit:10;" d="M 172.558594 183.582031 L 143.871094 167.019531 L 143.871094 133.898438 L 172.558594 117.335938 L 201.242188 133.898438 L 201.242188 167.019531 Z M 172.558594 183.582031 " onclick = "myFunction(this)"/>
+<path style="fill:white;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(50%,50%,50%);stroke-opacity:1;stroke-miterlimit:10;" d="M 201.242188 233.265625 L 172.558594 216.703125 L 172.558594 183.582031 L 201.242188 167.019531 L 229.925781 183.582031 L 229.925781 216.703125 Z M 201.242188 233.265625 " onclick = "myFunction(this)"/>
+<path style="fill:white;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(50%,50%,50%);stroke-opacity:1;stroke-miterlimit:10;" d="M 201.242188 133.898438 L 172.558594 117.335938 L 172.558594 84.214844 L 201.242188 67.652344 L 229.925781 84.214844 L 229.925781 117.335938 Z M 201.242188 133.898438 " onclick = "myFunction(this)"/>
+<path style="fill:white;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(50%,50%,50%);stroke-opacity:1;stroke-miterlimit:10;" d="M 229.925781 282.949219 L 201.242188 266.386719 L 201.242188 233.265625 L 229.925781 216.703125 L 258.613281 233.265625 L 258.613281 266.386719 Z M 229.925781 282.949219 " onclick = "myFunction(this)"/>
+<path style="fill:white;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(50%,50%,50%);stroke-opacity:1;stroke-miterlimit:10;" d="M 229.925781 183.582031 L 201.242188 167.019531 L 201.242188 133.898438 L 229.925781 117.335938 L 258.613281 133.898438 L 258.613281 167.019531 Z M 229.925781 183.582031 " onclick = "myFunction(this)"/>
 </g>
 </svg>
 
